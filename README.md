@@ -2,8 +2,8 @@
 
 This repo is the **source of truth** for:
 
-- **Requirements / use case definitions**: `docs/use-cases/`
-- **Supporting spec docs + diagrams**: `docs/`
+- **Requirements / use case definitions**: `use-cases/`
+- **Supporting spec docs + diagrams**: `specs`
 - **API contract** (OpenAPI): `openapi.yaml`
 
 Start here: `docs/README.md`
