@@ -145,7 +145,36 @@ All commits must follow **Conventional Commits**, for example:
 
 ---
 
-## 9. Review Requirements
+## 9. Development workflow (mandatory)
+
+### 9.1 Branches only
+
+- All work MUST happen on a branch (no direct commits to `main`).
+- Branch names MUST be: `{type}/{slug}`
+  - `{type}` MUST be one of: `chore`, `bug`, `refactor`, `feature`
+  - `{slug}` MUST be a short, lowercase, hyphenated description
+  - Examples:
+    - `feature/trip-publish-contract`
+    - `bug/rsvp-status-enum-docs`
+    - `refactor/reorganize-use-cases`
+    - `chore/changelog-guard-tuning`
+
+### 9.2 Pre-flight before PR
+
+- Before creating or updating a PR, you MUST run `make ci` locally and it MUST pass.
+
+### 9.3 Pull requests required
+
+- Every change MUST be delivered via a pull request.
+- CI must be green before merge (required checks).
+
+### 9.4 Automation via `gh`
+
+- Cursor agents SHOULD use the GitHub CLI (`gh`) to create PRs, set titles/descriptions, and enable auto-merge once checks pass.
+
+---
+
+## 10. Review Requirements
 
 The following changes require at least one explicit reviewer:
 
@@ -159,7 +188,7 @@ The following changes require at least one explicit reviewer:
 
 ---
 
-## 10. Repository Layout Conventions
+## 11. Repository Layout Conventions
 
 Recommended structure:
 
@@ -172,7 +201,7 @@ Recommended structure:
 
 ---
 
-## 11. Consumer Responsibilities
+## 12. Consumer Responsibilities
 
 - Consumers must pin to an explicit tag (no floating branches).
 - Generated clients or servers must be reproducible from the pinned spec.
@@ -180,7 +209,7 @@ Recommended structure:
 
 ---
 
-## 12. Non-Goals
+## 13. Non-Goals
 
 - This repository does not contain implementation code.
 - This repository does not define UI or UX behavior.
@@ -189,6 +218,6 @@ Recommended structure:
 
 ---
 
-## 13. Guiding Principle
+## 14. Guiding Principle
 
 > **If it affects interoperability, trust, or expectations, it belongs here first.**
