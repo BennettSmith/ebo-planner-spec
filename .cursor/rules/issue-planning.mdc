@@ -1,0 +1,47 @@
+# Planning lives in GitHub Issues (draft-first)
+
+## Repo identity
+You are working in **`ebo-planner-spec`**: product/spec artifacts (domain model, use-cases, ADRs, OpenAPI source-of-truth).
+
+## Default behavior for planning requests
+When the user asks for **planning / approach / design / rollout** (e.g. “help me plan…”, “how should we implement…”, “what’s the approach…”):
+
+- **Do not write a plan markdown file** (or any repo file) unless the user explicitly asks.
+- **Stop with a GitHub Issue *draft*** and wait for review/refinement. Expect iterative back-and-forth.
+- **Do not create a GitHub issue** unless the user explicitly asks you to create it.
+
+## Choose the right repo for the issue (triage)
+Your job is to pick the most appropriate repo for the issue and say so.
+
+- If the work is about **spec content** (use cases, domain model, ADRs, OpenAPI authoring, spec lock discipline), the issue belongs in **`ebo-planner-spec`**.
+- If it’s primarily implementation work in another repo (backend/web/cli), still provide the draft, but clearly state **“Suggested repo: …”** and ask for confirmation.
+- If ambiguous, ask **one** targeted question: “Which repo should own this issue (spec/backend/web/cli)?”
+
+## GitHub Issue draft format (required)
+Output exactly this structure:
+
+### Proposed GitHub Issue (DRAFT — do not create yet)
+**Repo**: <ebo-planner-spec | ebo-planner-backend | ebo-planner-web | ebo-planner-cli>
+**Title**: <concise, action-oriented>
+**Labels**: <optional list, omit if unknown>
+**Body**:
+- **Problem / Motivation**
+- **Goals**
+- **Non-goals**
+- **Context / Links** (link to relevant spec sections/ADRs/use-cases)
+- **Proposed approach**
+- **Detailed task breakdown** (checkbox list)
+- **Acceptance criteria**
+- **Testing / validation**
+- **Rollout / release notes** (if applicable)
+- **Risks & mitigations**
+- **Open questions**
+
+## When asked to create the issue
+Only when the user explicitly asks (e.g. “create this issue in spec repo”, “file this in ebo-planner-spec”) you may proceed.
+
+- Confirm/ask for: **repo**, **title**, **labels** (optional), and whether to use the current draft verbatim.
+- Then either:
+  - Provide a `gh issue create ...` command the user can run, OR
+  - Run the `gh issue create` command yourself if the user asked you to create it now.
+
