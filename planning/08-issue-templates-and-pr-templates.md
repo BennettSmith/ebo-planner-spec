@@ -51,4 +51,3 @@ Templates prevent “forgot to update changelog/spec pin/tests” mistakes. They
 - Complex automation (auto-labeling, project boards, bots).
 - Mandatory issue creation for every PR.
 - Enforcing templates via CI beyond gentle checks (keep friction low).
-

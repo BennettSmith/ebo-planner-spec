@@ -77,6 +77,7 @@ This repository uses **Semantic Versioning**: `vMAJOR.MINOR.PATCH`.
 ### 5.1 Breaking changes (MAJOR)
 
 Examples:
+
 - Removing or renaming endpoints
 - Removing or renaming fields
 - Changing field meaning or type
@@ -87,6 +88,7 @@ Examples:
 ### 5.2 Additive changes (MINOR)
 
 Examples:
+
 - Adding new endpoints
 - Adding new optional fields
 - Adding new enum values (clients must tolerate unknown values)
@@ -94,6 +96,7 @@ Examples:
 ### 5.3 Non-behavioral changes (PATCH)
 
 Examples:
+
 - Documentation corrections
 - Clarifying descriptions
 - Example improvements
@@ -130,6 +133,7 @@ Examples:
 ### 8.1 Commit format
 
 All commits must follow **Conventional Commits**, for example:
+
 - `feat(api): add trip artifact links`
 - `feat(use-cases): define publish preconditions`
 - `fix(spec): correct rsvp enum description`

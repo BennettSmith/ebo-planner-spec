@@ -35,5 +35,3 @@ git push --tags
 - **MAJOR**: breaking changes
 - **MINOR**: backwards-compatible features
 - **PATCH**: backwards-compatible fixes
-
-

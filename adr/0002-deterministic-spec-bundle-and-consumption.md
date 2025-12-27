@@ -48,4 +48,3 @@ The operational “living standard” for this decision is:
 ## Notes
 
 This ADR focuses on the **artifact standard and verification**. Cross-repo discipline and CI expectations are captured in ADR 0001 and [`planning/contract-policy.md`](../planning/contract-policy.md).
-

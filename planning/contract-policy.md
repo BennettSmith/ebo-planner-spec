@@ -77,4 +77,3 @@ CI failures should be actionable:
 - Automated multi-repo PR fan-out.
 - Supporting multiple spec versions simultaneously.
 - Sophisticated compatibility analysis beyond basic validation and drift detection.
-

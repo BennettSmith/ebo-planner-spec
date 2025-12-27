@@ -1,24 +1,30 @@
 # UC-01 — ListVisibleTripsForMember
 
 ## Primary Actor
+
 Member
 
 ## Goal
+
 Return lists of trips relevant to the authenticated member.
 
 Two variants are supported:
+
 - Published + canceled trips (discovery)
 - Draft trips where the member is an organizer (work-in-progress)
 
 ## Preconditions
+
 - Caller is authenticated.
 
 ## Postconditions
+
 - Trip/member data is returned. No state is modified.
 
 ---
 
 ## Main Success Flow
+
 **Variant 1 — Published + Canceled Trips**
 
 1. Actor requests the published/canceled trips list.
@@ -31,7 +37,9 @@ Two variants are supported:
 ---
 
 ## Alternate Flows
+
 A1 — Variant 2: Draft Trips Where Caller Is an Organizer
+
 - **Condition:** Actor requests the organizer-drafts list.
 - **Behavior:**
   - System loads trips where `status = DRAFT` that are visible to the caller:
@@ -44,19 +52,23 @@ A1 — Variant 2: Draft Trips Where Caller Is an Organizer
 ---
 
 ## Error Conditions
+
 - `401 Unauthorized` — caller is not authenticated
 
 ---
 
 ## Authorization Rules
+
 - Caller must be an authenticated member.
 - Any authenticated member may access Variant 1 (published + canceled trips).
 - Variant 2 returns only drafts visible to the caller:
   - `draftVisibility = PUBLIC`: visible only to organizers.
   - `draftVisibility = PRIVATE`: visible only to the creator (initial organizer).
+
 ---
 
 ## Output
+
 - Success DTO containing a list of `TripSummary` items.
 - DTO field rules:
   - For `PUBLISHED` and `CANCELED` trips: omit `draftVisibility`.
@@ -66,6 +78,7 @@ A1 — Variant 2: Draft Trips Where Caller Is an Organizer
 ---
 
 ## API Notes
+
 - Suggested endpoints:
   - `GET /trips` — Variant 1 (published + canceled trips)
   - `GET /trips/drafts` — Variant 2 (draft trips where caller is an organizer)
@@ -75,4 +88,5 @@ A1 — Variant 2: Draft Trips Where Caller Is an Organizer
 ---
 
 ## Notes
+
 - Aligned with v1 guardrails: members-only, planning-focused, lightweight RSVP, artifacts referenced externally.

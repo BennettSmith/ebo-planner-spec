@@ -3,6 +3,7 @@
 This folder contains **expanded specifications** for each v1 use case in the Overland Trip Planning system.
 
 Each use case is documented as a standalone Markdown file with a consistent structure intended for:
+
 - backend/API implementation
 - iOS/Android client development
 - security/privacy review

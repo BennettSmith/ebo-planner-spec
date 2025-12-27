@@ -62,4 +62,3 @@ Releases are where discipline collapses. Tag-driven automation keeps velocity hi
 - Homebrew/Scoop packaging for CLI.
 - Multi-environment web deployment orchestration in CI (keep v1 to build + metadata).
 - Complex release note generation beyond changelog-driven notes.
-

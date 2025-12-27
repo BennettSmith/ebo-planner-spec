@@ -16,4 +16,6 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ### Fixed
 
+- Add `make md-lint` / `make md-fix` and normalize markdown formatting across spec docs (no contract/behavior change).
+
 ### Security

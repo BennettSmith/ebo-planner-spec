@@ -51,4 +51,3 @@ The documents are intentionally “boring and reliable,” optimized for a **sol
 
 - [`adr/0001-contract-discipline-via-spec-lock.md`](../adr/0001-contract-discipline-via-spec-lock.md)
 - [`adr/0002-deterministic-spec-bundle-and-consumption.md`](../adr/0002-deterministic-spec-bundle-and-consumption.md)
-

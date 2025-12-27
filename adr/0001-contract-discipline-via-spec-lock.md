@@ -57,4 +57,3 @@ The operational “living standard” for this decision is:
 ## Notes
 
 This ADR is about the **discipline model**. The spec bundle format and publishing mechanism are defined in ADR 0002 and the living standard [`planning/spec-bundle-standard.md`](../planning/spec-bundle-standard.md).
-

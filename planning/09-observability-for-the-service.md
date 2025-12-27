@@ -47,4 +47,3 @@ When something breaks in a production-like environment, observability is the mul
 - Centralized log aggregation deployment (ELK/Loki/etc.).
 - Alerting rules, SLOs, and paging.
 - High-cardinality metrics (per-user, per-trip) and dashboard curation.
-

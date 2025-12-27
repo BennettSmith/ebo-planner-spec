@@ -1,21 +1,26 @@
 # UC-08 — CancelTrip
 
 ## Primary Actor
+
 Organizer
 
 ## Goal
+
 Cancel a trip. RSVPs are disabled and the trip becomes read-only.
 
 ## Preconditions
+
 - Caller is authenticated.
 - Target trip exists and is visible/accessible to the caller.
 
 ## Postconditions
+
 - System state is updated as described.
 
 ---
 
 ## Main Success Flow
+
 1. Actor requests cancellation for a given `tripId`.
 2. System authenticates the caller.
 3. System loads the trip by `tripId`.
@@ -28,7 +33,9 @@ Cancel a trip. RSVPs are disabled and the trip becomes read-only.
 ---
 
 ## Alternate Flows
+
 A1 — Cancel Already Canceled Trip
+
 - **Condition:** Trip status is already `CANCELED`.
 - **Behavior:** System performs no additional changes.
 - **Outcome:** `200 OK` returned (idempotent).
@@ -36,6 +43,7 @@ A1 — Cancel Already Canceled Trip
 ---
 
 ## Error Conditions
+
 - `401 Unauthorized` — caller is not authenticated
 - `404 Not Found` — trip does not exist OR is not visible to the caller
 - `409 Conflict` — cancel is not allowed (e.g., domain invariant violated)
@@ -45,11 +53,13 @@ A1 — Cancel Already Canceled Trip
 ---
 
 ## Authorization Rules
+
 - Caller must be an authenticated member.
 - Trip must be visible to the caller; if not, return `404 Not Found` (do not reveal existence).
 - Caller must be an organizer of the trip; if not, return `404 Not Found`.
 
 ## Domain Invariants Enforced
+
 - Only organizers may cancel a trip.
 - Trip status transitions to CANCELED (from DRAFT or PUBLISHED).
 - After cancelation, RSVP mutations are disabled.
@@ -59,11 +69,13 @@ A1 — Cancel Already Canceled Trip
 ---
 
 ## Output
+
 - Success DTO containing the updated trip.
 
 ---
 
 ## API Notes
+
 - Suggested endpoint: `POST /trips/{tripId}/cancel`
 - Prefer returning a stable DTO shape; avoid leaking internal persistence fields.
 - Cancellation is inherently idempotent; an idempotency key is optional.
@@ -71,4 +83,5 @@ A1 — Cancel Already Canceled Trip
 ---
 
 ## Notes
+
 - Aligned with v1 guardrails: members-only, planning-focused, lightweight RSVP, artifacts referenced externally.

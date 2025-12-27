@@ -51,4 +51,3 @@ Spec-first only works if **“what we ship” == “what we implement”**. With
 - Runtime contract negotiation / content-type versioning.
 - Supporting multiple concurrent spec versions in the same binary.
 - Complex semantic diff tooling beyond “bundle hash changed” + basic OpenAPI validation.
-
