@@ -65,4 +65,3 @@ In spec-first systems, “codegen chaos” is a top source of friction. A boring
 - Multi-language SDK packaging.
 - Supporting multiple spec bundles concurrently in a repo.
 - Advanced OpenAPI linting beyond basic validation + normalization.
-

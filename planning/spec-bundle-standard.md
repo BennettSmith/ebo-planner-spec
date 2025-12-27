@@ -78,4 +78,3 @@ Each generated directory should include a short README stating:
 - Multi-language SDK packaging and distribution.
 - Advanced OpenAPI lint rule sets and custom codegen plugins.
 - Supporting multiple concurrent pinned specs in a single repo.
-

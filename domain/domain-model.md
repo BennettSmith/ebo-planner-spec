@@ -92,5 +92,3 @@ Member "1" o-- "*" TripOrganizer : organizes
   - `YES` consumes exactly one “rig slot”; `NO`/`UNSET` do not.
   - Capacity is strictly enforced on transitions to `YES`.
 - **Artifacts**: externally hosted; stored as URLs.
-
-

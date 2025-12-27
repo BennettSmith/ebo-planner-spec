@@ -31,16 +31,20 @@ Execution of trips happens offline (radio, maps, in person).
 A Trip represents a coordinated plan for an overlanding trip.
 
 ##### Lifecycle States
+
 - `DRAFT`
 - `PUBLISHED`
 - `CANCELED`
 
 ##### Draft Visibility
+
 (Only relevant when `status = DRAFT`)
+
 - `PRIVATE` – visible only to the **creator** (initial organizer)
 - `PUBLIC` – visible only to **organizers** (no RSVP)
 
 ##### Required at Publish Time
+
 A trip **may be incomplete** while in draft. The following fields are required **only when publishing**:
 
 - name
@@ -55,6 +59,7 @@ A trip **may be incomplete** while in draft. The following fields are required *
 - at least one organizer
 
 ##### Fields (v1)
+
 - `TripId`
 - `createdByMemberId` (immutable; creator is the initial organizer)
 - `name`
@@ -72,6 +77,7 @@ A trip **may be incomplete** while in draft. The following fields are required *
 - `artifacts[]` (TripArtifact)
 
 ##### Invariants
+
 - RSVP is only allowed when `status = PUBLISHED`
 - Capacity is enforced strictly on RSVP = YES
 - **Draft authorization**:
@@ -88,12 +94,14 @@ A trip **may be incomplete** while in draft. The following fields are required *
 Represents a member’s intent to attend a trip with **one vehicle**.
 
 ##### Fields
+
 - `TripId`
 - `MemberId`
 - `response` (`YES | NO | UNSET`)
 - `updatedAt`
 
 ##### Rules
+
 - Owned by the member
 - Member may change RSVP at any time
 - `YES` consumes one rig slot
@@ -108,6 +116,7 @@ Represents a member’s intent to attend a trip with **one vehicle**.
 Authenticated account (identity provided by Auth Genie or equivalent).
 
 ##### Fields (v1)
+
 - `MemberId`
 - `displayName`
 - `email`
@@ -115,6 +124,7 @@ Authenticated account (identity provided by Auth Genie or equivalent).
 - `vehicleProfile?`
 
 ##### Rules
+
 - Any authenticated member may RSVP
 - All members can view trips and rosters
 - All members can search the member directory
@@ -126,6 +136,7 @@ Authenticated account (identity provided by Auth Genie or equivalent).
 Represents a member’s **primary vehicle** (v1 assumption).
 
 ##### Fields
+
 - make / model
 - tire size
 - lift / lockers
@@ -141,6 +152,7 @@ Represents a member’s **primary vehicle** (v1 assumption).
 ### Value Objects
 
 #### Location
+
 - `label`
 - `address?`
 - `latitudeLongitude?`
@@ -148,6 +160,7 @@ Represents a member’s **primary vehicle** (v1 assumption).
 Supports either a physical address or lat/lon (or both).
 
 #### TripArtifact
+
 - `type` (GPX, schedule, document, other)
 - `title`
 - `url` (external storage such as Google Drive or S3)
@@ -159,15 +172,18 @@ Supports either a physical address or lat/lon (or both).
 ### Trip Discovery
 
 #### 1. ListVisibleTripsForMember
+
 **Actor:** Member  
 **Description:**  
 Returns all trips visible to a member:
+
 - Published trips
 - Public drafts
 
 ---
 
 #### 2. GetTripDetails
+
 **Actor:** Member  
 **Description:**  
 Retrieve full trip details, including logistics, artifacts, and RSVP summary.
@@ -177,6 +193,7 @@ Retrieve full trip details, including logistics, artifacts, and RSVP summary.
 ### Trip Planning & Administration
 
 #### 3. CreateTripDraft
+
 **Actor:** Organizer  
 **Description:**  
 Create a new trip in `DRAFT` state. Incomplete data is allowed.
@@ -184,6 +201,7 @@ Create a new trip in `DRAFT` state. Incomplete data is allowed.
 ---
 
 #### 4. UpdateTripDraft
+
 **Actor:** Organizer  
 **Description:**  
 Update any fields on a draft trip. Partial updates allowed.
@@ -191,6 +209,7 @@ Update any fields on a draft trip. Partial updates allowed.
 ---
 
 #### 5. SetTripDraftVisibility
+
 **Actor:** Organizer  
 **Description:**  
 Toggle a draft between private and public visibility.
@@ -198,6 +217,7 @@ Toggle a draft between private and public visibility.
 ---
 
 #### 6. PublishTrip
+
 **Actor:** Organizer  
 **Description:**  
 Publish a trip, enforcing required fields and sending a **single announcement email** to the Google Group mailing list.
@@ -205,6 +225,7 @@ Publish a trip, enforcing required fields and sending a **single announcement em
 ---
 
 #### 7. UpdatePublishedTrip
+
 **Actor:** Organizer  
 **Description:**  
 Edit any aspect of a published trip (logistics may evolve).
@@ -212,6 +233,7 @@ Edit any aspect of a published trip (logistics may evolve).
 ---
 
 #### 8. CancelTrip
+
 **Actor:** Organizer  
 **Description:**  
 Cancel a trip. RSVPs are disabled and the trip becomes read-only.
@@ -221,6 +243,7 @@ Cancel a trip. RSVPs are disabled and the trip becomes read-only.
 ### Organizer Management
 
 #### 9. AddTripOrganizer
+
 **Actor:** Organizer  
 **Description:**  
 Add an existing member as a co-organizer for a trip.
@@ -228,6 +251,7 @@ Add an existing member as a co-organizer for a trip.
 ---
 
 #### 10. RemoveTripOrganizer
+
 **Actor:** Organizer  
 **Description:**  
 Remove an organizer from a trip. At least one organizer must remain.
@@ -237,6 +261,7 @@ Remove an organizer from a trip. At least one organizer must remain.
 ### RSVP Coordination
 
 #### 11. SetMyRSVP
+
 **Actor:** Member  
 **Description:**  
 Set RSVP to `YES`, `NO`, or `UNSET` for a published trip.
@@ -244,6 +269,7 @@ Set RSVP to `YES`, `NO`, or `UNSET` for a published trip.
 ---
 
 #### 12. GetTripRSVPSummary
+
 **Actor:** Member  
 **Description:**  
 View lists of attending and not-attending members.
@@ -251,6 +277,7 @@ View lists of attending and not-attending members.
 ---
 
 #### 13. GetMyRSVPForTrip
+
 **Actor:** Member  
 **Description:**  
 Retrieve the member’s current RSVP state for a trip.
@@ -260,6 +287,7 @@ Retrieve the member’s current RSVP state for a trip.
 ### Member Directory
 
 #### 14. ListMembers
+
 **Actor:** Member  
 **Description:**  
 View a minimal directory of members for coordination.
@@ -267,6 +295,7 @@ View a minimal directory of members for coordination.
 ---
 
 #### 15. SearchMembers
+
 **Actor:** Member  
 **Description:**  
 Search members by name or email (used for adding organizers).
@@ -276,6 +305,7 @@ Search members by name or email (used for adding organizers).
 ### Member Profile
 
 #### 16. UpdateMyMemberProfile
+
 **Actor:** Member  
 **Description:**  
 Update profile metadata including group alias and vehicle profile.
@@ -296,6 +326,7 @@ Update profile metadata including group alias and vehicle profile.
 ## Forward Compatibility Notes
 
 v1 is intentionally simple but designed to evolve toward:
+
 - Waitlists
 - Multiple vehicles per member
 - Passenger counts (adult/child)

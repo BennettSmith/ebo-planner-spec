@@ -1,0 +1,28 @@
+globs:
+  - "**/*.md"
+
+ignores:
+  - "**/node_modules/**"
+
+config:
+  # Keep defaults on; we only tune a few common rules for spec-style docs.
+  default: true
+
+  # We intentionally allow long lines in specs (URLs, example payloads, etc).
+  MD013: false
+
+  # Ordered list prefix style isn't important for our docs; many files use 1., 2., 3. etc.
+  MD029: false
+
+  # Allow inline HTML when needed (e.g., for diagrams/notes).
+  MD033: false
+
+  # Duplicate headings are common/intentional in long narrative docs (e.g. repeated "Fields"/"Rules" sections).
+  MD024: false
+
+  # We sometimes use emphasis as a lightweight subheading in specs.
+  MD036: false
+
+  # NOTE: We keep MD032 enabled (blank lines around lists) to match common editor formatting expectations.
+
+

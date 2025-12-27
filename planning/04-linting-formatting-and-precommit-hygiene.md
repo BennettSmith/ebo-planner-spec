@@ -58,4 +58,3 @@ You want “clean by default” without turning solo development into a fight. C
 - Heavy lint rulesets / stylistic bikeshedding.
 - Mandatory hooks for all operations (recommend, don’t enforce).
 - Enforcing lint/format on generated code beyond “don’t hand-edit.”
-

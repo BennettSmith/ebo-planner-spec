@@ -53,4 +53,3 @@ In a multi-repo system, docs rot fastest. Clear boundaries reduce drift and make
 - Full documentation site (Docusaurus/MkDocs) and versioned docs.
 - Big ADR process beyond what already exists.
 - Auto-syncing docs across repos (avoid tooling overhead).
-

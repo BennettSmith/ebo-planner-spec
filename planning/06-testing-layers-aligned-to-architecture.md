@@ -64,4 +64,3 @@ Without explicit boundaries, tests become slow, flaky, and redundant. Clear laye
 - Performance, load, chaos, or fuzz testing.
 - Snapshot testing everywhere (keep snapshots targeted to stable outputs only).
 - Running full system tests in every repo on every commit (keep cross-repo coupling minimal).
-

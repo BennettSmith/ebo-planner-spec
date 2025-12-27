@@ -64,4 +64,3 @@ Security debt is cheapest to avoid early. The key is “small and always on,” 
 - High-complexity SLSA/provenance work.
 - Enterprise secret management integration (Vault, etc.).
 - Pen testing automation and dedicated security tooling stacks.
-

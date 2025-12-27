@@ -1,21 +1,26 @@
 # UC-12 — GetTripRSVPSummary
 
 ## Primary Actor
+
 Member
 
 ## Goal
+
 View lists of attending and not-attending members for a trip.
 
 ## Preconditions
+
 - Caller is authenticated.
 - Target trip exists and is visible/accessible to the caller.
 
 ## Postconditions
+
 - Trip/member data is returned. No state is modified.
 
 ---
 
 ## Main Success Flow
+
 1. Actor requests the RSVP summary for a given `tripId`.
 2. System authenticates the caller.
 3. System loads the trip by `tripId`.
@@ -36,11 +41,13 @@ View lists of attending and not-attending members for a trip.
 ---
 
 ## Alternate Flows
+
 - None.
 
 ---
 
 ## Error Conditions
+
 - `401 Unauthorized` — caller is not authenticated
 - `404 Not Found` — trip does not exist OR is not visible to the caller
 - `409 Conflict` — RSVP summary is not available (e.g., trip is a draft)
@@ -49,17 +56,21 @@ View lists of attending and not-attending members for a trip.
 ---
 
 ## Authorization Rules
+
 - Caller must be an authenticated member.
 - Trip must be visible to the caller; if not, return `404 Not Found` (do not reveal existence).
 - RSVP summary is available only for `PUBLISHED` and `CANCELED` trips.
+
 ---
 
 ## Output
+
 - Success DTO containing `TripRSVPSummary`.
 
 ---
 
 ## API Notes
+
 - Suggested endpoint: `GET /trips/{tripId}/rsvps`
 - Prefer returning a stable DTO shape; avoid leaking internal persistence fields.
 - Read-only: safe and cacheable (where appropriate).
@@ -67,4 +78,5 @@ View lists of attending and not-attending members for a trip.
 ---
 
 ## Notes
+
 - Aligned with v1 guardrails: members-only, planning-focused, lightweight RSVP, artifacts referenced externally.
